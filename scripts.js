@@ -1,18 +1,13 @@
+// Selecciona los elementos
 const grid = document.getElementById("grid");
-icons.forEach((emoji, i) => {
-  const icon = document.createElement("div");
-  icon.className = "icon";
-  icon.innerHTML = emoji;
-  grid.appendChild(icon);
-});
-
-// Movimiento con mouse (drag)
-let isDragging = false;
-let startX, startY;
-let currentX = -90, currentY = -90;
-
 const sphere = document.getElementById("sphere");
 
+// Variables para movimiento
+let isDragging = false;
+let startX, startY;
+let currentX = 0, currentY = 0;
+
+// Inicia arrastre - Detiene
 sphere.addEventListener("mousedown", e => {
   isDragging = true;
   startX = e.clientX;
@@ -20,11 +15,13 @@ sphere.addEventListener("mousedown", e => {
   sphere.style.cursor = "grabbing";
 });
 
+
 window.addEventListener("mouseup", () => {
   isDragging = false;
   sphere.style.cursor = "grab";
 });
 
+// Movimiento mientras se arrastra
 window.addEventListener("mousemove", e => {
   if (!isDragging) return;
   const dx = e.clientX - startX;
